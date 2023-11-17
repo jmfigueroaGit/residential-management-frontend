@@ -1,0 +1,28 @@
+<div class="center">
+  <div class="home">
+    <img
+      src="assets/images/check-email-icon.png"
+      alt="landing-page"
+      class="home-img"
+    />
+    <div class="home-info">
+      <h1 class="home-header">
+        Verify your e-mail to finish creating your account
+      </h1>
+      <p class="home-body">
+        Check an e-mail from E-Baryo and please confirm that sample@email.com is
+        your e-mail address within 48 hours.
+      </p>
+    </div>
+    <div class="home-button">
+      <button
+        mat-flat-button
+        color="primary"
+        class="home-button"
+        (click)="navigateTo('/auth/create-password')"
+      >
+        Verify
+      </button>
+    </div>
+  </div>
+</div>

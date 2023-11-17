@@ -1,0 +1,44 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  &-img {
+    margin-top: -100px;
+    height: 200px;
+    width: auto;
+  }
+
+  &-info {
+    margin-top: 19px;
+    color: #1a202c;
+    line-height: normal;
+    font-style: normal;
+    text-align: center;
+    width: 270px;
+    h1 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    p {
+      font-family: Open Sans;
+      font-size: 13px;
+      font-weight: 300;
+      padding: 0 35px;
+    }
+  }
+
+  &-input {
+    padding: 10px 0;
+    width: 280px;
+    height: 45px;
+  }
+
+  &-button {
+    margin-top: 10px;
+    width: 279px;
+    height: 45px;
+    border-radius: 20px;
+  }
+}

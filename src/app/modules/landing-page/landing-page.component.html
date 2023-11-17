@@ -1,0 +1,28 @@
+<div class="center">
+  <div class="home">
+    <img
+      src="assets/images/landing-page-icon.png"
+      alt="landing-page"
+      class="home-img"
+    />
+    <div class="home-info">
+      <h1 class="home-header">Lets get started</h1>
+      <p class="home-body">
+        Connect with your Barangay today and be updated at home.
+      </p>
+    </div>
+    <div class="home-button">
+      <button
+        mat-flat-button
+        color="primary"
+        class="home-button"
+        (click)="navigateTo('/auth/register')"
+      >
+        Create Account
+      </button>
+      <button mat-flat-button class="home-button" (click)="navigateTo('/auth')">
+        Log In Account
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="center">
+  <div class="home">
+    <img
+      src="assets/images/register-icon.png"
+      alt="landing-page"
+      class="home-img"
+    />
+    <div class="home-info">
+      <h1 class="home-header">Register</h1>
+      <p class="home-body">
+        Connect with your Barangay today and be updated at home.
+      </p>
+      <form class="home-form">
+        <mat-form-field class="email" appearance="outline" class="home-input">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput />
+        </mat-form-field>
+      </form>
+    </div>
+
+    <div class="home-button">
+      <button
+        mat-flat-button
+        color="primary"
+        class="home-button"
+        (click)="navigateTo('/auth/check-mail')"
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
