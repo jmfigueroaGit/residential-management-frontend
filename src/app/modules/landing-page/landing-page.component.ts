@@ -14,13 +14,5 @@ export class LandingPageComponent implements OnInit {
     this.router.navigateByUrl(url);
   }
 
-  ngOnInit(): void {
-    this.fetchUsers();
-  }
-
-  fetchUsers(): void {
-    this.authService.getUsers().subscribe((data) => {
-      console.log('users: ', data.users);
-    });
-  }
+  ngOnInit(): void {}
 }

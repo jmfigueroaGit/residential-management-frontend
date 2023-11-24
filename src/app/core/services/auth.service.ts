@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { GET_USERS } from '../graphql/queries/user.mutation';
+import {
+  AUTH_VERIFY_EMAIL,
+  AUTH_VERIFY_TOKEN,
+} from '../graphql/mutations/auth.mutation';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +12,19 @@ import { GET_USERS } from '../graphql/queries/user.mutation';
 export class AuthService {
   constructor(private apollo: Apollo) {}
 
-  getUsers(): Observable<any> {
-    return this.apollo
-      .watchQuery<any>({ query: GET_USERS })
-      .valueChanges.pipe(map((result) => result.data));
+  // @desc    Register Email
+  registerEmail(email: string): Observable<any> {
+    return this.apollo.mutate({
+      mutation: AUTH_VERIFY_EMAIL,
+      variables: { email },
+    });
+  }
+
+  // @desc    Verify Token
+  verifyResetToken(token: String): Observable<any> {
+    return this.apollo.mutate({
+      mutation: AUTH_VERIFY_TOKEN,
+      variables: { token },
+    });
   }
 }

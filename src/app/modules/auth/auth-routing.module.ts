@@ -10,9 +10,10 @@ const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
+    pathMatch: 'full',
   },
   {
-    path: 'create-password',
+    path: 'create-password/:token',
     component: CreatePasswordComponent,
   },
   {

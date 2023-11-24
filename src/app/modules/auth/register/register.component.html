@@ -5,28 +5,33 @@
       alt="landing-page"
       class="home-img"
     />
-    <div class="home-info">
-      <h1 class="home-header">Register</h1>
-      <p class="home-body">
-        Connect with your Barangay today and be updated at home.
-      </p>
-      <form class="home-form">
+    <form
+      (ngSubmit)="registerEmail(registerForm.value.email)"
+      [formGroup]="registerForm"
+      class="home-form"
+    >
+      <div class="home-info">
+        <h1 class="home-header">Register</h1>
+        <p class="home-body">
+          Connect with your Barangay today and be updated at home.
+        </p>
         <mat-form-field class="email" appearance="outline" class="home-input">
           <mat-label>Email</mat-label>
-          <input type="email" matInput />
+          <input type="email" matInput formControlName="email" />
         </mat-form-field>
-      </form>
-    </div>
+      </div>
 
-    <div class="home-button">
-      <button
-        mat-flat-button
-        color="primary"
-        class="home-button"
-        (click)="navigateTo('/auth/check-mail')"
-      >
-        Continue
-      </button>
-    </div>
+      <div class="home-button">
+        <button
+          mat-flat-button
+          color="primary"
+          class="home-button"
+          type="submit"
+          [disabled]="loading"
+        >
+          Continue
+        </button>
+      </div>
+    </form>
   </div>
 </div>
