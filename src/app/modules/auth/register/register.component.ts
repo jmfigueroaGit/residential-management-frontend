@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
+import { AuthenticateService } from 'src/app/shared/pipes/authenticate.service';
 
 @Component({
   selector: 'app-register',
@@ -16,10 +17,20 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private auth: AuthenticateService
   ) {}
 
+  navigateTo(url: string): void {
+    this.router.navigateByUrl(url);
+  }
+
   ngOnInit(): void {
+    this.auth.isAutheticated().subscribe((loggedIn) => {
+      if (loggedIn) {
+        this.navigateTo('/home');
+      }
+    });
     this.initForm();
   }
 
@@ -36,7 +47,7 @@ export class RegisterComponent implements OnInit {
           this.loading = true;
         } else {
           this.snackbarService.openSnackBar(data.auth_verify.message);
-          this.router.navigateByUrl('/auth/check-mail');
+          this.navigateTo('/auth/check-mail');
         }
       },
       error: (error) => {
@@ -46,19 +57,3 @@ export class RegisterComponent implements OnInit {
     });
   }
 }
-
-/*
-    this.authService.registerEmail(email).subscribe(
-      ({ data, loading }) => {
-        if (loading) {
-          this.loading = true;
-        } else {
-          this.snackbarService.openSnackBar(data.message);
-          this.router.navigateByUrl('/auth/check-mail');
-        }
-      },
-      (error) => {
-        console.log('there was an error sending the query', error);
-      }
-    );
-*/

@@ -1,0 +1,60 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  &-img {
+    margin-top: -150px;
+    height: 150px;
+    width: auto;
+  }
+
+  &-info {
+    margin-top: 19px;
+    color: #1a202c;
+    line-height: normal;
+    font-style: normal;
+    text-align: center;
+    width: 270px;
+    h1 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    p {
+      font-family: Open Sans;
+      font-size: 13px;
+      font-weight: 300;
+    }
+  }
+  &-steps {
+    &-info {
+      width: 311px;
+      height: 125px;
+      background-color: #edf2f7;
+      cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+      transition:
+        box-shadow 0.3s,
+        transform 0.3s; /* Smooth transition for box-shadow and transform */
+
+      &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); /* Hover effect */
+      }
+
+      mat-card-title {
+        display: flex;
+        align-items: center;
+        span {
+          padding-left: 3px;
+        }
+      }
+    }
+  }
+
+  &-button {
+    margin-top: 19px;
+    width: 279px;
+    height: 45px;
+    border-radius: 20px;
+  }
+}

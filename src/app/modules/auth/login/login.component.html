@@ -5,12 +5,18 @@
       alt="landing-page"
       class="home-img"
     />
-    <div class="home-info">
-      <h1 class="home-header">Email</h1>
-      <form class="home-form">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="home-form">
+      <div class="home-info">
+        <h1 class="home-header">Email</h1>
+
         <mat-form-field class="email" appearance="outline" class="home-input">
           <mat-label>Email</mat-label>
-          <input type="password" matInput />
+          <input
+            type="email"
+            autocomplete="off"
+            formControlName="email"
+            matInput
+          />
         </mat-form-field>
         <br />
         <mat-form-field
@@ -19,23 +25,29 @@
           class="home-input"
         >
           <mat-label>Password</mat-label>
-          <input type="password" matInput />
+          <input
+            type="password"
+            autocomplete="off"
+            formControlName="password"
+            matInput
+          />
         </mat-form-field>
-      </form>
-    </div>
+      </div>
 
-    <div class="home-button">
-      <button
-        mat-flat-button
-        color="primary"
-        class="home-button"
-        (click)="navigateTo('/home')"
-      >
-        Log In
-      </button>
-      <a class="home-body" (click)="navigateTo('/auth/forgot-password')">
-        Forgot Password?
-      </a>
-    </div>
+      <div class="home-button">
+        <button
+          mat-flat-button
+          color="primary"
+          class="home-button"
+          type="submit"
+          [disabled]="loading || !loginForm.valid"
+        >
+          Log In
+        </button>
+        <a class="home-body" (click)="navigateTo('/auth/forgot-password')">
+          Forgot Password?
+        </a>
+      </div>
+    </form>
   </div>
 </div>

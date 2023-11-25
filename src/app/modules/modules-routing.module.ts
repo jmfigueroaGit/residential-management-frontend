@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DefaultHomeComponent } from './default-home/default-home.component';
+import { AuthenticatedGuard } from '../core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: DefaultHomeComponent,
+    canActivate: [AuthenticatedGuard],
   },
 ];
 

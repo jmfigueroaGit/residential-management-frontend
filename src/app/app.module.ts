@@ -33,9 +33,12 @@ import { SnackbarComponent } from './shared/components/snackbar/snackbar.compone
       provide: APOLLO_OPTIONS,
       useFactory(httpLink: HttpLink) {
         return {
-          cache: new InMemoryCache(),
+          cache: new InMemoryCache({
+            resultCaching: true,
+          }),
           link: httpLink.create({
             uri: 'http://localhost:4000/graphql',
+            withCredentials: true,
           }),
         };
       },

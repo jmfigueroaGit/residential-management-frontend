@@ -33,8 +33,8 @@ export const AUTH_RESET_PASSWORD = gql`
 `;
 
 export const AUTH_LOGIN_USER = gql`
-  mutation Auth_login($username: String!, $password: String!) {
-    auth_login(username: $username, password: $password) {
+  mutation Auth_login($email: String!, $password: String!) {
+    auth_login(email: $email, password: $password) {
       token
       user {
         _id
@@ -44,9 +44,9 @@ export const AUTH_LOGIN_USER = gql`
         resident {
           _id
         }
+        role
         username
         verified
-        role
       }
     }
   }
