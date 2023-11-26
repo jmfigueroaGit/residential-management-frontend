@@ -1,0 +1,39 @@
+.personal-page {
+  width: 100%; /* Set the form width to 100% */
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &-title {
+    margin-left: 35px;
+  }
+  &-form {
+    margin-left: 35px;
+    .full-width {
+      width: 90%;
+    }
+
+    .flex {
+      display: flex;
+      .half-width {
+        width: 44%;
+        margin-top: 5px;
+      }
+      .first-flex {
+        margin-right: 2%;
+        margin-top: 5px;
+      }
+    }
+
+    .submit-button {
+      margin-top: 10px;
+      width: 90%;
+      height: 45px;
+      border-radius: 20px;
+    }
+  }
+}
+
+.tab {
+  height: 100%;
+}

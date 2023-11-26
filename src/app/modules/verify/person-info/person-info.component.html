@@ -1,0 +1,252 @@
+<div class="tab">
+  <mat-stepper linear="true" #stepper>
+    <mat-step
+      [stepControl]="personalInfoForm"
+      state="person"
+      label="Personal Info"
+    >
+      <form [formGroup]="personalInfoForm">
+        <div class="personal-page">
+          <div class="personal-page-title">
+            <h2>Personal Info</h2>
+          </div>
+          <form class="personal-page-form" [formGroup]="personalInfoForm">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Last Name</mat-label>
+              <input type="name" matInput formControlName="lastName" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>First Name</mat-label>
+              <input type="name" matInput formControlName="firstName" />
+            </mat-form-field>
+            <div class="flex">
+              <mat-form-field
+                appearance="outline"
+                class="half-width first-flex"
+              >
+                <mat-label>Middle Name</mat-label>
+                <input type="name" matInput formControlName="middleName" />
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                class="half-width second-flex"
+              >
+                <mat-label>Extension Name</mat-label>
+                <input type="name" matInput formControlName="extension" />
+              </mat-form-field>
+            </div>
+            <div class="flex">
+              <mat-form-field
+                appearance="outline"
+                class="half-width first-flex"
+              >
+                <mat-label>Sex</mat-label>
+                <input type="name" matInput formControlName="sex" />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Date of Birth</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="dobPicker"
+                  formControlName="birthday"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="dobPicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #dobPicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="flex">
+              <mat-form-field
+                appearance="outline"
+                class="half-width first-flex"
+              >
+                <mat-label>Civil Status</mat-label>
+                <input type="name" matInput formControlName="civilStatus" />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Nationality</mat-label>
+                <input type="name" matInput formControlName="nationality" />
+              </mat-form-field>
+            </div>
+            <div>
+              <button
+                matStepperNext
+                mat-flat-button
+                color="primary"
+                class="submit-button"
+              >
+                Next
+              </button>
+            </div>
+          </form>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step
+      [stepControl]="contactInfoForm"
+      state="phone"
+      label="Contact Info"
+    >
+      <div class="personal-page">
+        <div class="personal-page-title">
+          <h2>Contacts</h2>
+        </div>
+        <form class="personal-page-form" [formGroup]="contactInfoForm">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Mobile Number</mat-label>
+            <input type="name" matInput formControlName="mobileNumber" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" />
+          </mat-form-field>
+          <h4>Person to notify in case of emergency</h4>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Name</mat-label>
+            <input type="email" matInput formControlName="econtactName" />
+          </mat-form-field>
+
+          <div class="flex">
+            <mat-form-field appearance="outline" class="half-width first-flex">
+              <mat-label>Mobile Number</mat-label>
+              <input type="name" matInput formControlName="econtactNumber" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Relationship</mat-label>
+              <input
+                type="name"
+                matInput
+                formControlName="econtactRelationship"
+              />
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Address</mat-label>
+            <input type="name" matInput formControlName="econtactAddress" />
+          </mat-form-field>
+          <div>
+            <button
+              matStepperNext
+              mat-flat-button
+              color="primary"
+              class="submit-button"
+            >
+              Next
+            </button>
+            <button matStepperPrevious mat-flat-button class="submit-button">
+              Back
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="addressInfoForm" state="home" label="Address">
+      <div class="personal-page">
+        <div class="personal-page-title">
+          <h2>Address</h2>
+        </div>
+        <form class="personal-page-form" [formGroup]="addressInfoForm">
+          <div class="flex">
+            <mat-form-field appearance="outline" class="half-width first-flex">
+              <mat-label>House Number</mat-label>
+              <input type="name" matInput formControlName="houseNo" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="half-width second-flex">
+              <mat-label>Street</mat-label>
+              <input type="name" matInput formControlName="street" />
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Barangay</mat-label>
+            <input type="name" matInput formControlName="barangay" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Region</mat-label>
+            <input type="name" matInput formControlName="region" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>City</mat-label>
+            <input type="name" matInput formControlName="city" />
+          </mat-form-field>
+          <div class="flex">
+            <mat-form-field appearance="outline" class="half-width first-flex">
+              <mat-label>Zipcode</mat-label>
+              <input type="name" matInput formControlName="zipcode" />
+            </mat-form-field>
+          </div>
+          <div>
+            <button
+              matStepperNext
+              mat-flat-button
+              color="primary"
+              class="submit-button"
+            >
+              Next
+            </button>
+            <button matStepperPrevious mat-flat-button class="submit-button">
+              Back
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step
+      [stepControl]="backgroundInfoForm"
+      state="work"
+      label="Background Info"
+    >
+      <div class="personal-page">
+        <div class="personal-page-title">
+          <h2>Personal Background</h2>
+        </div>
+        <form
+          class="personal-page-form"
+          [formGroup]="backgroundInfoForm"
+          (ngSubmit)="submit()"
+        >
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Employment</mat-label>
+            <input type="name" matInput formControlName="employment" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Highest Educational Attainment</mat-label>
+            <input type="name" matInput formControlName="highEduAttainment" />
+          </mat-form-field>
+          <div>
+            <h4>Check all that applies:</h4>
+            <p>
+              <mat-checkbox formControlName="isSeniorCitizen"
+                >Senior Citizen</mat-checkbox
+              >
+            </p>
+            <p>
+              <mat-checkbox formControlName="isPWD"
+                >Person With Disability</mat-checkbox
+              >
+            </p>
+            <p>
+              <mat-checkbox formControlName="isSingleParent"
+                >Single Parent</mat-checkbox
+              >
+            </p>
+            <p>
+              <mat-checkbox formControlName="isStudent">Student</mat-checkbox>
+            </p>
+          </div>
+          <div class="home-button">
+            <button
+              mat-flat-button
+              color="primary"
+              class="submit-button"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
