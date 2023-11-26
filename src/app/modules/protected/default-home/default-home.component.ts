@@ -7,12 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./default-home.component.scss'],
 })
 export class DefaultHomeComponent implements OnInit {
+  isCompletedInfo: boolean = true;
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
-  proceed(): void {
-    this.navigateTo('verify-info');
+  proceed(goto: string): void {
+    this.navigateTo(goto);
   }
 
   navigateTo(url: string): void {

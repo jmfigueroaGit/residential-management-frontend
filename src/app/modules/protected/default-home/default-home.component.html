@@ -11,10 +11,11 @@
     </div>
 
     <div class="home-steps">
-      <mat-card class="home-steps-info" (click)="proceed()">
+      <mat-card class="home-steps-info" (click)="proceed('/verify-info')">
         <mat-card-header>
           <mat-card-title>
-            <mat-icon>check_circle</mat-icon>
+            <mat-icon *ngIf="isCompletedInfo">check_circle</mat-icon>
+            <mat-icon *ngIf="!isCompletedInfo">check_circle_outline</mat-icon>
             <span> Personal Information</span>
           </mat-card-title>
           <mat-card-subtitle
@@ -24,10 +25,11 @@
         </mat-card-header>
       </mat-card>
       <br />
-      <mat-card class="home-steps-info" (click)="proceed()">
+      <mat-card class="home-steps-info" (click)="proceed('/verify-id')">
         <mat-card-header>
           <mat-card-title>
-            <mat-icon>check_circle_outline</mat-icon>
+            <mat-icon *ngIf="isCompletedInfo">check_circle</mat-icon>
+            <mat-icon *ngIf="!isCompletedInfo">check_circle_outline</mat-icon>
             <span> Use identity card</span>
           </mat-card-title>
           <mat-card-subtitle
@@ -39,10 +41,10 @@
     </div>
 
     <div class="home-steps"></div>
-    <div class="home-button">
-      <button mat-flat-button color="primary" class="home-button" type="button">
-        Continue
-      </button>
+    <div class="home-action">
+      <p *ngIf="isCompletedInfo">
+        Waiting for your account to be fully verified. Please be patient.
+      </p>
     </div>
   </div>
 </div>

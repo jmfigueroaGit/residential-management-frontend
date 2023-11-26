@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { DefaultHomeComponent } from './default-home/default-home.component';
+import { DefaultHomeComponent } from './protected/default-home/default-home.component';
 import { AuthenticatedGuard } from '../core/guards/auth.guard';
-import { PersonInfoComponent } from './verify/person-info/person-info.component';
-import { VerifyIdComponent } from './verify/verify-id/verify-id.component';
-import { IdentificationComponent } from './verify/identification/identification.component';
+import { PersonInfoComponent } from './protected/verify/person-info/person-info.component';
+import { VerifyIdComponent } from './protected/verify/verify-id/verify-id.component';
+import { IdentificationComponent } from './protected/verify/identification/identification.component';
+import { WelcomeComponent } from './protected/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,11 @@ const routes: Routes = [
     path: 'select-id',
     component: IdentificationComponent,
     pathMatch: 'full',
+    canActivate: [AuthenticatedGuard],
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
     canActivate: [AuthenticatedGuard],
   },
 ];

@@ -1,0 +1,233 @@
+<div class="tab">
+  <mat-tab-group animationDuration="500ms" backgroundColor="primary" #tabGroup>
+    <mat-tab label="Select ID">
+      <div class="personal-page">
+        <div class="personal-page-title">
+          <h2>Select the type document you wish to scan</h2>
+        </div>
+        <div class="id-list">
+          <button
+            mat-flat-button
+            color="primary"
+            class="submit-button"
+            (click)="selectedIdType('national-id')"
+          >
+            National ID
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="submit-button"
+            (click)="selectedIdType('passport-id')"
+          >
+            Passport
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="submit-button"
+            (click)="selectedIdType('philhealth-id')"
+          >
+            PhilHealth ID
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="submit-button"
+            (click)="selectedIdType('um-id')"
+          >
+            UMID
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="submit-button"
+            (click)="selectedIdType('driverslicense-id')"
+          >
+            Driver’s License
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="submit-button"
+            (click)="selectedIdType('barangay-id')"
+          >
+            Barangay ID
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="submit-button"
+            (click)="selectedIdType('student-id')"
+          >
+            Student
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Upload ID" [disabled]="!idType">
+      <div class="personal-page">
+        <div class="home-info">
+          <img
+            src="assets/images/upload_id.png"
+            alt="landing-page"
+            class="home-img"
+          />
+          <h1 class="home-header">Upload your ID Picture</h1>
+          <p class="home-body">
+            Make sure that the images are clear and in landscape mode.
+          </p>
+        </div>
+        <div class="home-action">
+          <label for="frontImageInput" class="image-button">
+            <input
+              #frontImageInput
+              type="file"
+              style="display: none"
+              (change)="onFrontSideSelected($event)"
+              accept="image/*"
+            />
+
+            <div class="image-container">
+              <img
+                *ngIf="uploadedFrontImageUrl"
+                [src]="uploadedFrontImageUrl"
+                alt="Uploaded Image"
+                class="uploaded-image"
+                (click)="frontImageInput.click()"
+              />
+              <div *ngIf="uploadedFrontImageUrl" class="overlay">
+                <button
+                  *ngIf="uploadedFrontImageUrl"
+                  mat-flat-button
+                  color="accent"
+                  class="change-image-button"
+                  (click)="frontImageInput.click()"
+                >
+                  Change Image
+                </button>
+              </div>
+            </div>
+            <button
+              *ngIf="!uploadedFrontImageUrl"
+              mat-flat-button
+              color="primary"
+              class="upload-button"
+              (click)="frontImageInput.click()"
+            >
+              Upload Front Side
+            </button>
+          </label>
+          <label for="backImageInput" class="image-button">
+            <input
+              #backImageInput
+              type="file"
+              style="display: none"
+              (change)="onBackSideSelected($event)"
+              accept="image/*"
+            />
+
+            <div class="image-container">
+              <img
+                *ngIf="uploadedBackImageUrl"
+                [src]="uploadedBackImageUrl"
+                alt="Uploaded Image"
+                class="uploaded-image"
+                (click)="backImageInput.click()"
+              />
+              <div *ngIf="uploadedBackImageUrl" class="overlay">
+                <button
+                  *ngIf="uploadedBackImageUrl"
+                  mat-flat-button
+                  color="accent"
+                  class="change-image-button"
+                  (click)="backImageInput.click()"
+                >
+                  Change Image
+                </button>
+              </div>
+            </div>
+            <button
+              *ngIf="!uploadedBackImageUrl"
+              mat-flat-button
+              color="primary"
+              class="upload-button"
+              (click)="backImageInput.click()"
+            >
+              Upload Back Side
+            </button>
+          </label>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab
+      label="Upload DP"
+      [disabled]="!idType || !uploadedFrontImageUrl || !uploadedBackImageUrl"
+    >
+      <div class="personal-page">
+        <div class="home-info">
+          <img
+            src="assets/images/upload_dp.png"
+            alt="landing-page"
+            class="home-img"
+          />
+          <h1 class="home-header">Upload your profile picture</h1>
+          <p class="home-body">
+            Make sure to upaload your own picture as an “Additional verification
+            document.” .
+          </p>
+        </div>
+        <div class="home-action">
+          <label for="displayImageInput" class="image-button">
+            <input
+              #displayImageInput
+              type="file"
+              style="display: none"
+              (change)="onDPSelected($event)"
+              accept="image/*"
+            />
+
+            <div class="image-container">
+              <img
+                *ngIf="uploadedDisplayImageUrl"
+                [src]="uploadedDisplayImageUrl"
+                alt="Uploaded Image"
+                class="uploaded-image"
+                (click)="displayImageInput.click()"
+              />
+              <div *ngIf="uploadedDisplayImageUrl" class="overlay">
+                <button
+                  *ngIf="uploadedDisplayImageUrl"
+                  mat-flat-button
+                  color="accent"
+                  class="change-image-button"
+                  (click)="displayImageInput.click()"
+                >
+                  Change Image
+                </button>
+              </div>
+            </div>
+            <button
+              *ngIf="!uploadedDisplayImageUrl"
+              mat-flat-button
+              color="primary"
+              class="upload-button"
+              (click)="displayImageInput.click()"
+            >
+              Upload Display Picture
+            </button>
+          </label>
+          <button
+            mat-flat-button
+            color="primary"
+            class="submit-button"
+            (click)="submit()"
+            *ngIf="uploadedDisplayImageUrl"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

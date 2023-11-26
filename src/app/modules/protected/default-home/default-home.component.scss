@@ -50,11 +50,22 @@
       }
     }
   }
-
-  &-button {
-    margin-top: 19px;
-    width: 279px;
-    height: 45px;
-    border-radius: 20px;
+  &-action {
+    margin-top: 38px;
+    .home-button {
+      width: 279px;
+      height: 45px;
+      border-radius: 20px;
+    }
+    p {
+      width: 216px;
+      color: #1a202c;
+      text-align: center;
+      font-family: Open Sans;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
   }
 }
