@@ -13,7 +13,12 @@
       </p>
     </div>
     <div class="home-button">
-      <button mat-flat-button color="primary" class="home-button">
+      <button
+        mat-flat-button
+        color="primary"
+        class="home-button"
+        (click)="submit('/home')"
+      >
         Continue
       </button>
     </div>

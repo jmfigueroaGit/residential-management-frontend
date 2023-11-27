@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./default-home.component.scss'],
 })
 export class DefaultHomeComponent implements OnInit {
-  isCompletedInfo: boolean = true;
+  isCompletedInfo: boolean = false;
   constructor(private router: Router) {}
 
   ngOnInit(): void {}

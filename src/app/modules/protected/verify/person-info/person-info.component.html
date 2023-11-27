@@ -76,6 +76,7 @@
                 mat-flat-button
                 color="primary"
                 class="submit-button"
+                [disabled]="!personalInfoForm.valid"
               >
                 Next
               </button>
@@ -132,6 +133,7 @@
               mat-flat-button
               color="primary"
               class="submit-button"
+              [disabled]="!contactInfoForm.valid"
             >
               Next
             </button>
@@ -182,6 +184,7 @@
               mat-flat-button
               color="primary"
               class="submit-button"
+              [disabled]="!addressInfoForm.valid"
             >
               Next
             </button>
@@ -241,6 +244,7 @@
               color="primary"
               class="submit-button"
               type="submit"
+              [disabled]="!backgroundInfoForm.valid"
             >
               Submit
             </button>

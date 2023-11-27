@@ -10,6 +10,11 @@ import { PersonInfoComponent } from './protected/verify/person-info/person-info.
 import { MaterialModule } from '../core/utils/material/material.module';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { WelcomeComponent } from './protected/welcome/welcome.component';
+import { NewsfeedComponent } from './protected/timelines/newsfeed/newsfeed.component';
+import { ComponentsModule } from '../shared/components/components.module';
+import { RequestComponent } from './protected/timelines/request/request.component';
+import { NotificationComponent } from './protected/timelines/notification/notification.component';
+import { MenuComponent } from './protected/timelines/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +24,17 @@ import { WelcomeComponent } from './protected/welcome/welcome.component';
     VerifyIdComponent,
     IdentificationComponent,
     WelcomeComponent,
+    NewsfeedComponent,
+    RequestComponent,
+    NotificationComponent,
+    MenuComponent,
   ],
-  imports: [CommonModule, ModulesRoutingModule, MaterialModule],
+  imports: [
+    CommonModule,
+    ModulesRoutingModule,
+    MaterialModule,
+    ComponentsModule,
+  ],
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,

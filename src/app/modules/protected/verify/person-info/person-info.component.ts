@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResidentData } from 'src/app/core/models/resident.model';
+import { ResidentService } from 'src/app/core/services/resident.service';
 
 @Component({
   selector: 'app-person-info',
@@ -12,7 +14,12 @@ export class PersonInfoComponent implements OnInit {
   contactInfoForm!: FormGroup;
   addressInfoForm!: FormGroup;
   backgroundInfoForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  residentData!: ResidentData;
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private residentService: ResidentService
+  ) {}
 
   ngOnInit(): void {
     this.initForms();
@@ -80,14 +87,59 @@ export class PersonInfoComponent implements OnInit {
     const addressInfo = this.addressInfoForm.value;
     const backgroundInfo = this.backgroundInfoForm.value;
 
-    this.navigateTo('verify-id');
+    this.residentData = this.residentService.getDefaultResidentData();
+
+    // personalInfo
+    this.residentData.name.first = personalInfo.firstName;
+    this.residentData.name.middle = personalInfo.middleName;
+    this.residentData.name.last = personalInfo.lastName;
+    this.residentData.name.extension = personalInfo.extension;
+    this.residentData.sex = personalInfo.sex;
+    this.residentData.birthday = personalInfo.birthday;
+    this.residentData.civilStatus = personalInfo.civilStatus;
+    this.residentData.nationality = personalInfo.nationality;
+    // contactInfo
+    this.residentData.contactNumber = contactInfo.mobileNumber;
+    this.residentData.email = contactInfo.email;
+    this.residentData.contactPerson.name = contactInfo.econtactName;
+    this.residentData.contactPerson.contactNumber = contactInfo.econtactNumber;
+    this.residentData.contactPerson.relationship =
+      contactInfo.econtactRelationship;
+    this.residentData.contactPerson.address = contactInfo.econtactAddress;
+    // addressInfo
+    this.residentData.address.houseNumber = addressInfo.houseNo;
+    this.residentData.address.street = addressInfo.street;
+    this.residentData.address.barangay = addressInfo.barangay;
+    this.residentData.address.region = addressInfo.region;
+    this.residentData.address.city = addressInfo.city;
+    this.residentData.address.zipcode = addressInfo.zipcode;
+    // backgroundInfo
+    this.residentData.background.employment = backgroundInfo.employment;
+    this.residentData.background.highEduAttainment =
+      backgroundInfo.highEduAttainment;
+    this.residentData.background.isSeniorCitizen =
+      backgroundInfo.isSeniorCitizen;
+    this.residentData.background.isPWD = backgroundInfo.isPWD;
+    this.residentData.background.isSingleParent = backgroundInfo.isSingleParent;
+    this.residentData.background.isStudent = backgroundInfo.isStudent;
+
+    this.createResident(this.residentData);
+
+    // );
+  }
+
+  createResident(resident: object): void {
+    this.residentService.createResident(resident).subscribe({
+      next: ({ data, loading }) => {
+        if (loading) {
+          console.log('Loading');
+        } else {
+          this.navigateTo('verify-id');
+        }
+      },
+      error: (error) => {
+        console.error(error.message);
+      },
+    });
   }
 }
-
-/*
-[disabled]="
-!isPersonalInfoFormValid() ||
-!isContactInfoFormValid() ||
-!isAddressInfoFormValid()
-"
-*/

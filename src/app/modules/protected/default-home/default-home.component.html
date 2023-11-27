@@ -1,17 +1,33 @@
 <div class="center">
   <div class="home">
-    <img
-      src="assets/images/complete-credentials.png"
-      alt="landing-page"
-      class="home-img"
-    />
-    <div class="home-info">
-      <h1 class="home-header">Verify Account</h1>
-      <p class="home-body">Lorem ipsum dolor sit amet</p>
-    </div>
-
+    <ng-template [ngIf]="!isCompletedInfo">
+      <img
+        src="assets/images/complete-credentials.png"
+        alt="landing-page"
+        class="home-img"
+      />
+      <div class="home-info">
+        <h1 class="home-header">Verify Account</h1>
+        <p class="home-body">Lorem ipsum dolor sit amet</p>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="isCompletedInfo">
+      <img
+        src="assets/images/sample_dp.png"
+        alt="landing-page"
+        class="home-img"
+      />
+      <div class="home-info">
+        <h1 class="home-header">Lorem Ipsum</h1>
+        <p class="home-body">Lorem ipsum dolor sit amet</p>
+      </div>
+    </ng-template>
     <div class="home-steps">
-      <mat-card class="home-steps-info" (click)="proceed('/verify-info')">
+      <mat-card
+        class="home-steps-info"
+        [ngClass]="{ 'disabled-card': isCompletedInfo }"
+        (click)="isCompletedInfo ? null : proceed('/verify-info')"
+      >
         <mat-card-header>
           <mat-card-title>
             <mat-icon *ngIf="isCompletedInfo">check_circle</mat-icon>
@@ -25,7 +41,11 @@
         </mat-card-header>
       </mat-card>
       <br />
-      <mat-card class="home-steps-info" (click)="proceed('/verify-id')">
+      <mat-card
+        class="home-steps-info"
+        [ngClass]="{ 'disabled-card': isCompletedInfo }"
+        (click)="isCompletedInfo ? null : proceed('/verify-id')"
+      >
         <mat-card-header>
           <mat-card-title>
             <mat-icon *ngIf="isCompletedInfo">check_circle</mat-icon>
@@ -40,7 +60,6 @@
       </mat-card>
     </div>
 
-    <div class="home-steps"></div>
     <div class="home-action">
       <p *ngIf="isCompletedInfo">
         Waiting for your account to be fully verified. Please be patient.
