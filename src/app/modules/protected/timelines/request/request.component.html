@@ -1,0 +1,35 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="content">
+    <div class="content-title">
+      <h1>Request Document</h1>
+      <h3>Choose type of barangay document</h3>
+    </div>
+    <div class="content-list">
+      <button mat-flat-button color="primary" class="nav-button">
+        <h1>ID</h1>
+      </button>
+      <button mat-flat-button color="primary" class="nav-button">
+        <h1>Certificate</h1>
+      </button>
+      <button mat-flat-button color="primary" class="nav-button">
+        <h1>Indigency</h1>
+      </button>
+      <button mat-flat-button color="primary" class="nav-button">
+        <h1>Clearance</h1>
+      </button>
+    </div>
+    <div class="content-info">
+      <h3>This document request is for:</h3>
+      <mat-selection-list #shoes [multiple]="false">
+        <mat-list-option>Local Employment</mat-list-option>
+        <mat-list-option>Overseas Employment</mat-list-option>
+        <mat-list-option>Loan</mat-list-option>
+        <mat-list-option>Others</mat-list-option>
+      </mat-selection-list>
+    </div>
+    <div class="content-action">
+      <button mat-flat-button color="primary" class="button">Submit</button>
+    </div>
+  </div>
+</div>

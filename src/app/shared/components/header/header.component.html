@@ -1,0 +1,45 @@
+<mat-toolbar class="header">
+  <mat-toolbar-row class="header-title">
+    <img src="assets/images/ebaryo.png" alt="logo.png" class="logo-img" />
+    <div>
+      <h1 class="header-text">Barangay 21</h1>
+    </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="header-action">
+    <div class="toolbar-action">
+      <button
+        mat-button
+        class="toolbar-action-button"
+        [ngClass]="{ active: isActive('/newsfeed') }"
+        (click)="navigateTo('/newsfeed')"
+      >
+        <mat-icon class="material-icon">home</mat-icon>
+      </button>
+      <button
+        mat-button
+        class="toolbar-action-button"
+        [ngClass]="{ active: isActive('/request') }"
+        (click)="navigateTo('/request')"
+      >
+        <mat-icon class="material-icon">insert_drive_file</mat-icon>
+      </button>
+      <button
+        mat-button
+        class="toolbar-action-button"
+        [ngClass]="{ active: isActive('/notification') }"
+        (click)="navigateTo('/notification')"
+      >
+        <mat-icon class="material-icon">notifications</mat-icon>
+      </button>
+      <button
+        mat-button
+        class="toolbar-action-button"
+        [ngClass]="{ active: isActive('/menu') }"
+        (click)="navigateTo('/menu')"
+      >
+        <mat-icon class="material-icon">menu</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
